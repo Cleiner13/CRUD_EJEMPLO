@@ -52,19 +52,19 @@ public class UsuarioServelet extends HttpServlet {
 		
 		try {
 			switch (accion) {
-			case "/new":
+			case "/nuevo":
 				showNewForm(request, response);
 				break;
-			case "/insert":
-				insertUser(request, response);
+			case "/insertar":
+				insertarUsuario(request, response);
 				break;
-			case "/delete":
-				deleteUser(request, response);
+			case "/eliminar":
+				eliminarUsuario(request, response);
 				break;
-			case "/edit":
+			case "/editar":
 				showEditForm(request, response);
 				break;
-			case "/update":
+			case "/actualizar":
 				updateUser(request, response);
 				break;
 			default:
@@ -86,7 +86,7 @@ public class UsuarioServelet extends HttpServlet {
 	
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("usuario-form.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -94,13 +94,13 @@ public class UsuarioServelet extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Usuario existingUser = usuarioDao.seleccionarUsuario(id);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("usuario-form.jsp");
 		request.setAttribute("usuario", existingUser);
 		dispatcher.forward(request, response);
 
 	}
 
-	private void insertUser(HttpServletRequest request, HttpServletResponse response) 
+	private void insertarUsuario(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		String name = request.getParameter("nombre");
 		String email = request.getParameter("email");
@@ -120,7 +120,7 @@ public class UsuarioServelet extends HttpServlet {
 		response.sendRedirect("listar");
 	}
 
-	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
+	private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		usuarioDao.eliminarUsuario(id);

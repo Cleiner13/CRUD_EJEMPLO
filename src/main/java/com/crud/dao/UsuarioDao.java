@@ -12,12 +12,13 @@ import com.crud.modelo.Usuario;
 
 public class UsuarioDao {
 
-	private String jdbcURL = "jdbc:mysql://localhost:3306/userdb?useSSL=false";
+	private String jdbcURL = "jdbc:mysql://localhost:3306/crud";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "";
+	private String jdbcDriver = "com.mysql.jdbc.Driver";
 
 	private static final String INSERT_USERS_SQL = "INSERT INTO usuarios" + "  (nombre, email) VALUES "
-			+ " (?, ?, ?);";
+			+ " (?, ?);";
 
 	private static final String SELECT_USER_BY_ID = "select id,nombre,email from users where id =?";
 	private static final String SELECT_ALL_USERS = "select * from usuarios";
@@ -30,8 +31,9 @@ public class UsuarioDao {
 	protected Connection getConnection() {
 		Connection connection = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(jdbcDriver);
 			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

@@ -16,7 +16,7 @@
 		<nav class="navbar navbar-expand-md navbar-dark"
 			style="background-color: black">
 			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/list"
+				<li><a href="<%=request.getContextPath()%>/listar"
 					class="nav-link">USUARIOS</a></li>
 			</ul>
 		</nav>
@@ -31,8 +31,8 @@
 			<hr>
 			<div class="container text-left">
 
-				<a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add
-					New User</a>
+				<a href="<%=request.getContextPath()%>/nuevo" class="btn btn-success">
+					NUEVO USUARIO</a>
 			</div>
 			<br>
 			<table class="table table-bordered">

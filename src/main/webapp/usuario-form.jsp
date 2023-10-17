@@ -13,10 +13,10 @@
 
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark"
-			style="background-color: blue">
+			style="background-color: black">
 
 			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/list"
+				<li><a href="<%=request.getContextPath()%>/listar"
 					class="nav-link">USUARIOS</a></li>
 			</ul>
 		</nav>
@@ -26,10 +26,10 @@
 		<div class="card">
 			<div class="card-body">
 				<c:if test="${user != null}">
-					<form action="update" method="post">
+					<form action="actualizar" method="post">
 				</c:if>
 				<c:if test="${user == null}">
-					<form action="insert" method="post">
+					<form action="insertar" method="post">
 				</c:if>
 
 				<caption>
